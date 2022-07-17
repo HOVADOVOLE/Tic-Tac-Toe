@@ -1,5 +1,6 @@
 let pole = document.querySelector(".pole");
 let dopocet = 0;
+let vyhra = false;
 
 for(var i = 0; i < 9; i++){
     let policka = document.createElement("div");
@@ -17,8 +18,10 @@ function Hrac(event){
         dopocet++;
     }
     KontrolaHrac();//Kontrola hráče
-    Bot();//Spustí Kolo Bota
-    KontrolaBot();//Kontrola bota, jako mohl bych to udělat líp, ale jsem líný kokotko já vím :)
+    if(vyhra === false){
+        Bot();//Spustí Kolo Bota
+        KontrolaBot();//Kontrola bota, jako mohl bych to udělat líp, ale jsem líný kokotko já vím :)
+    }
 }
 
 function Bot(){
@@ -54,7 +57,8 @@ function KontrolaHrac(){
         ){
 
         //Výpis Stavu
-        let vypis = "Vyhráls!";
+        vyhra = true;
+        let vypis = "Vyhrál jsi!";
         let vytvor = document.createElement("h1");
         vytvor.className = "vypisMe";
         vytvor.innerHTML = vypis;
